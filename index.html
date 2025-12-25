@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secret Santa 🎅</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Mountains+of+Christmas:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="snow-container"></div>
+
+    <div class="app-container">
+        <!-- Header -->
+        <header>
+            <h1>Secret Santa 🎄</h1>
+            <p>Ho Ho Ho! Who will you gift?</p>
+        </header>
+
+        <!-- View: Setup (Visible initially if no game in progress) -->
+        <div id="view-setup" class="view hidden">
+            <div class="card glass">
+                <h2>Enter Participants</h2>
+                <div id="participants-list">
+                    <!-- Default inputs, will be populated by JS -->
+                </div>
+                <div class="actions">
+                    <button id="create-game-btn" class="btn primary">Create Game 🔗</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- View: Share Link (New) -->
+        <div id="view-share" class="view hidden">
+            <div class="card glass">
+                <h2>Game Ready! 🔗</h2>
+                <p>Send this link to the group:</p>
+                <div class="share-box">
+                    <input type="text" id="share-link-input" readonly>
+                    <button id="copy-link-btn" class="btn secondary">Copy</button>
+                </div>
+                <p class="small-text">Everyone must use this exact link.</p>
+                <button id="enter-game-btn" class="btn primary mt-4">Enter Game (I'm playing)</button>
+            </div>
+        </div>
+
+        <!-- View: Selection (Main hub) -->
+        <div id="view-selection" class="view hidden">
+            <div class="card glass">
+                <h2>Who are you?</h2>
+                <div id="names-grid" class="grid-container">
+                    <!-- Buttons for each name generated here -->
+                </div>
+                <button id="reset-game-btn" class="btn danger small mt-4">Reset (New Game)</button>
+            </div>
+        </div>
+
+        <!-- View: Pass Device -->
+        <div id="view-pass" class="view hidden">
+            <div class="card glass center-content">
+                <h2>Pass to <span id="pass-target-name" class="highlight-text">...</span></h2>
+                <p>Don't peek if this isn't you!</p>
+                <button id="ready-reveal-btn" class="btn primary">I am <span id="confirm-name">...</span></button>
+                <button id="cancel-pass-btn" class="btn text">Go Back</button>
+            </div>
+        </div>
+
+        <!-- View: Reveal -->
+        <div id="view-reveal" class="view hidden">
+            <div class="card glass center-content">
+                <h2>Hello <span id="santa-name">...</span>!</h2>
+                <p>Your giftee is inside...</p>
+
+                <div class="gift-box-container" id="gift-box">
+                    <div class="gift-box">
+                        <div class="lid"></div>
+                        <div class="box"></div>
+                    </div>
+                </div>
+
+                <div id="reveal-content" class="hidden">
+                    <p class="reveal-text">You are Secret Santa for:</p>
+                    <h1 id="giftee-name" class="christmas-text">...</h1>
+                    <button id="finish-reveal-btn" class="btn primary">Got it! 🤫</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
