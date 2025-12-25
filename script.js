@@ -26,7 +26,7 @@ const btnEnterGame = document.getElementById('enter-game-btn');
 const inputShareLink = document.getElementById('share-link-input');
 const btnCopyLink = document.getElementById('copy-link-btn');
 const namesGrid = document.getElementById('names-grid');
-const btnReset = document.getElementById('reset-game-btn');
+// Removed: const btnReset = document.getElementById('reset-game-btn');
 
 // Pass/Reveal Elements
 const spanPassTarget = document.getElementById('pass-target-name');
@@ -222,12 +222,7 @@ btnCancelPass.onclick = () => {
     showView('selection');
 };
 
-btnReset.onclick = () => {
-    if (confirm("Reset everything? This will delete local progress.")) {
-        localStorage.removeItem(`santa_${gameState.seed}`);
-        window.location.href = window.location.pathname; // strip params
-    }
-};
+// Removed: btnReset.onclick
 
 
 // --- Helper Functions ---
