@@ -15,6 +15,7 @@ const views = {
     setup: document.getElementById('view-setup'),
     share: document.getElementById('view-share'),
     selection: document.getElementById('view-selection'),
+    welcomeBack: document.getElementById('view-welcome-back'),
     pass: document.getElementById('view-pass'),
     reveal: document.getElementById('view-reveal')
 };
@@ -27,6 +28,7 @@ const inputShareLink = document.getElementById('share-link-input');
 const btnCopyLink = document.getElementById('copy-link-btn');
 const namesGrid = document.getElementById('names-grid');
 // Removed: const btnReset = document.getElementById('reset-game-btn');
+const btnSeeAgain = document.getElementById('see-again-btn');
 
 // Pass/Reveal Elements
 const spanPassTarget = document.getElementById('pass-target-name');
@@ -146,8 +148,14 @@ function startGame() {
     // Check LocalStorage for 'revealed' state
     const revealedName = localStorage.getItem(`santa_${gameState.seed}`);
 
-    renderSelectionGrid(gameState.names, matches, revealedName);
-    showView('selection');
+    if (revealedName) {
+        // Show Welcome Back Screen
+        btnSeeAgain.onclick = () => onConfirmIdentity(revealedName, matches[revealedName]);
+        showView('welcomeBack');
+    } else {
+        renderSelectionGrid(gameState.names, matches, revealedName);
+        showView('selection');
+    }
 }
 
 function renderSelectionGrid(names, matches, revealedName) {
